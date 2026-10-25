@@ -1,0 +1,22 @@
+<mxfile host="app.diagrams.net" modified="2026-10-25T12:00:00.000Z" agent="ChatGPT" version="24.7.17" type="device">
+  <diagram id="classes-after" name="Classes - after">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/><mxCell id="1" parent="0"/>
+        <mxCell id="booking" value="&lt;&lt;class&gt;&gt;&#xa;BookingService&#xa;----------------&#xa;+ find_free_rooms(stay)&#xa;+ reserve(guest, room, stay)&#xa;+ cancel(reservation_id)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1"><mxGeometry x="420" y="300" width="260" height="130" as="geometry"/></mxCell>
+        <mxCell id="storeInterface" value="&lt;&lt;Protocol&gt;&gt;&#xa;ReservationStore&#xa;----------------&#xa;+ count()&#xa;+ has_overlap(room, stay)&#xa;+ save(reservation)&#xa;+ find(id)&#xa;+ count_confirmed(room, stay)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1"><mxGeometry x="70" y="90" width="270" height="155" as="geometry"/></mxCell>
+        <mxCell id="memoryStore" value="InMemoryReservationStore&#xa;----------------&#xa;+ count()&#xa;+ has_overlap(room, stay)&#xa;+ save(reservation)&#xa;+ find(id)&#xa;+ count_confirmed(room, stay)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1"><mxGeometry x="50" y="510" width="300" height="145" as="geometry"/></mxCell>
+        <mxCell id="notificationInterface" value="&lt;&lt;Protocol&gt;&gt;&#xa;NotificationSender&#xa;----------------&#xa;+ send_confirmation(reservation)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1"><mxGeometry x="760" y="90" width="270" height="100" as="geometry"/></mxCell>
+        <mxCell id="email" value="EmailNotificationSender&#xa;----------------&#xa;+ send_confirmation(reservation)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1"><mxGeometry x="650" y="510" width="240" height="95" as="geometry"/></mxCell>
+        <mxCell id="sms" value="SmsNotificationSender&#xa;----------------&#xa;+ send_confirmation(reservation)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1"><mxGeometry x="920" y="510" width="240" height="95" as="geometry"/></mxCell>
+        <mxCell id="domain" value="Domain (domain.py)&#xa;----------------&#xa;DateRange · Guest · Room&#xa;Reservation · ReservationStatus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1"><mxGeometry x="420" y="80" width="260" height="100" as="geometry"/></mxCell>
+        <mxCell id="e1" value="depends on abstraction" style="endArrow=open;endFill=0;html=1;rounded=0;" edge="1" parent="1" source="booking" target="storeInterface"><mxGeometry relative="1" as="geometry"><mxPoint x="380" y="280" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="e2" value="depends on abstraction" style="endArrow=open;endFill=0;html=1;rounded=0;" edge="1" parent="1" source="booking" target="notificationInterface"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" value="implements" style="endArrow=block;endFill=0;dashed=1;html=1;" edge="1" parent="1" source="memoryStore" target="storeInterface"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" value="implements" style="endArrow=block;endFill=0;dashed=1;html=1;" edge="1" parent="1" source="email" target="notificationInterface"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" value="implements" style="endArrow=block;endFill=0;dashed=1;html=1;" edge="1" parent="1" source="sms" target="notificationInterface"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" value="uses domain objects" style="endArrow=open;endFill=0;html=1;" edge="1" parent="1" source="booking" target="domain"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
